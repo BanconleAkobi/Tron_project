@@ -19,6 +19,13 @@ public class Player {
         this.coins = coins;
     }
 
+    
+    /**
+     * methode abstract à implementer dans aiplayer et human player pour la définition des directions.
+     * @return
+     */
+    public abstract Direction getDirection(); 
+    
     /**
      * Getter pour l'attribut name.
      * 

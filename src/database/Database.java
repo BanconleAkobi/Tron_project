@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class Database {
     
     // Informations de connexion à la base de données
-    private static final String URL = "jdbc:postgresql://localhost:5432/nom_de_la_base"; // Remplace "nom_de_la_base" par le nom de ta base
-    private static final String USER = "nom_utilisateur"; // Ton nom d'utilisateur PostgreSQL
-    private static final String PASSWORD = "mot_de_passe"; // Ton mot de passe PostgreSQL
+    private static final String URL = "jdbc:postgresql://localhost:5432/Tron"; 
+    private static final String USER = "tron"; 
+    private static final String PASSWORD = "z1MkfIwdx2f75r"; 
 
     // Instance unique de la connexion
     private static Connection connection = null;
