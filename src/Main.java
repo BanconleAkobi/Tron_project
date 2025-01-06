@@ -1,1 +1,3 @@
-cd J
+public class Main {
+    
+}
