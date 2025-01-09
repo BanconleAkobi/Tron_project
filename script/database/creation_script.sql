@@ -1,6 +1,6 @@
 -- Table player
 CREATE TABLE player (
-    player_id INT AUTO_INCREMENT PRIMARY KEY,
+    player_id SERIAL PRIMARY KEY,
     player_name VARCHAR(50) NOT NULL,
     registration_date DATE NOT NULL,
     hashed_password VARCHAR(255),
@@ -9,34 +9,40 @@ CREATE TABLE player (
 
 -- Table scoreboard
 CREATE TABLE scoreboard (
-    game_id INT AUTO_INCREMENT PRIMARY KEY,
-    game_date DATETIME NOT NULL,
+    game_id SERIAL PRIMARY KEY,
+    game_date TIMESTAMP NOT NULL,
     duration INT NOT NULL,
     score INT,
     player_id INT,
     player_name VARCHAR(50),
-    FOREIGN KEY (player_id) REFERENCES player(player_id),
-    FOREIGN KEY (player_name) REFERENCES player(player_name)
+    FOREIGN KEY (player_id) REFERENCES player(player_id)
 );
 
 -- Table moto
 CREATE TABLE moto (
-    moto_id INT AUTO_INCREMENT PRIMARY KEY,
+    moto_id SERIAL PRIMARY KEY,
     color VARCHAR(20) NOT NULL,
     player_id INT,
-    image VARCHAR(MAX),
+    image TEXT, -- Remplacement de VARCHAR(MAX) par TEXT
     moto_name VARCHAR(50),
     price INT,
-    FOREIGN KEY (player_id) REFERENCES player(player_id),
-    FOREIGN KEY (game_id) REFERENCES scoreboard(game_id)
+    FOREIGN KEY (player_id) REFERENCES player(player_id)
 );
 
 -- Table trail
 CREATE TABLE trail (
-    trail_id INT AUTO_INCREMENT PRIMARY KEY,
+    trail_id SERIAL PRIMARY KEY,
     color VARCHAR(20),
     price INT,
     name VARCHAR(50)
+);
+
+-- Table inventory
+CREATE TABLE inventory (
+    inventory_id SERIAL PRIMARY KEY,
+    player_id INT,
+    coins INT,
+    FOREIGN KEY (player_id) REFERENCES player(player_id)
 );
 
 -- Table asset_moto_inv
@@ -55,12 +61,4 @@ CREATE TABLE asset_trail_inv (
     PRIMARY KEY (inventory_id, trail_id),
     FOREIGN KEY (inventory_id) REFERENCES inventory(inventory_id),
     FOREIGN KEY (trail_id) REFERENCES trail(trail_id)
-);
-
--- Table inventory
-CREATE TABLE inventory (
-    inventory_id INT AUTO_INCREMENT PRIMARY KEY,
-    player_id INT,
-    coins INT,
-    FOREIGN KEY (player_id) REFERENCES player(player_id)
 );

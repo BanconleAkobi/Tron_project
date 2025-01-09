@@ -1,21 +1,36 @@
 import java.util.ArrayList;
 import java.util.List;
 
-//inventaire des assets.
 public class Inventory {
+    private List<Asset> assets;
+    private int coins;
 
-    
-    //array list pour les differents assets(moto + trail)
-    private List<Asset> assets = new ArrayList<>();
+    public Inventory(int coins) {
+        this.assets = new ArrayList<>();
+        this.coins = coins;
+    }
 
-    //methode d'ajout d'un asset dans l'inventaire.
-    public void addAsset(Asset asset) {
-        assets.add(asset);
+    public boolean addAsset(Asset asset) {
+        if (coins >= asset.getPrice()) {
+            assets.add(asset);
+            coins -= asset.getPrice();
+            System.out.println("Successful purchase: " + asset.getName());
+            return true;
+        } else {
+            System.out.println("Less coins for a purchase  : " + asset.getName());
+            return false;
+        }
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
     }
 
     public List<Asset> getAssets() {
         return assets;
     }
-
-
 }

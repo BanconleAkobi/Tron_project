@@ -1,12 +1,18 @@
-import java.awt.Image;
-
 public class Moto extends Asset {
-    public double speed; 
-    public Image image; 
+    private double speed;  // Vitesse de la moto
+    private String imagePath;  // Chemin de l'image
 
-    public Moto(String name, int price, double speed, Image image) {
+    public Moto(String name, int price, double speed, String imagePath) {
         super(name, price);
         this.speed = speed;
-        this.image = image;
+        this.imagePath = imagePath;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 }

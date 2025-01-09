@@ -1,10 +1,12 @@
-import java.awt.Color;
-
 public class Trail extends Asset {
-    public Color color;
+    private String color;  // Couleur de la traînée
 
-    public Trail(String name, int price, Color color) {
+    public Trail(String name, int price, String color) {
         super(name, price);
         this.color = color;
+    }
+
+    public String getColor() {
+        return color;
     }
 }
