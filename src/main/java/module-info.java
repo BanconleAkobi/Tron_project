@@ -1,9 +1,8 @@
 module com.example.test {
+    requires java.sql;
     requires javafx.controls;
     requires javafx.fxml;
 
-    requires org.controlsfx.controls;
-
-    opens com.example.test to javafx.fxml;
-    exports com.example.test;
+    exports Database;
+    exports Game;
 }
